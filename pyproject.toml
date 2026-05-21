@@ -1,0 +1,18 @@
+[project]
+name = "backendserviceboilerplate"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "django==4.2.27",
+    "django-cors-headers==4.3.1",
+    "djangorestframework==3.14.0",
+    "mysqlclient>=2.2.8",
+    "requests==2.31.0",
+]
+
+
+[[tool.uv.index]]
+name = "platform-pypi-virtualr"
+url = "https://usw2.packages.broadcom.com/artifactory/api/pypi/platform-pypi-virtualr/simple"
