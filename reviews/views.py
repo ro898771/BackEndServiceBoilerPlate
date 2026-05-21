@@ -53,3 +53,23 @@ class ReviewDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
     permission_classes = [HandshakePermission]
+
+
+class ReviewDeleteAllView(APIView):
+    """
+    DELETE /api/dinasour/reviews/delete-all/
+    Deletes every row in the reviews table (handshake required).
+    Returns the count of deleted records.
+    """
+    permission_classes = [HandshakePermission]
+
+    def delete(self, request):
+        deleted_count, _ = Review.objects.all().delete()
+        return Response(
+            {
+                "status": "success",
+                "message": f"All reviews deleted.",
+                "deleted_count": deleted_count,
+            },
+            status=status.HTTP_200_OK,
+        )
